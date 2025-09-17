@@ -266,8 +266,8 @@ const exp = (function() {
         w7: { color:"#F781BF", label:"7", points:[7] },   // cyan
 
         w2_6:   { color:"#E41A1C", label:"2_6", points:[2,6] },   // teal
-        w1_7:   { color:"#E41A1C", label:"1_7", points:[1,7] },   // teal
-        w3_5:   { color:"#E41A1C", label:"3_5", points:[3,5] },   // teal
+        w1_7:   { color:"#E41A1C", label:"1_7", points:[5,7] },   // teal
+        w3_5:   { color:"#E41A1C", label:"3_5", points:[1,3] },   // teal
 
         w1_3_5_7: { color:"#1B9E77", label:"1_3_5_7", points:[1,3,5,7] }, // turquoise (lighter/brighter than teal/green-teal)
 
