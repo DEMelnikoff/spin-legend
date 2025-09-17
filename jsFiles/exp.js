@@ -306,11 +306,10 @@ const exp = (function() {
         score: function() {
             return scoreTracker
         },
-        data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), sd: jsPsych.timelineVariable('sd'), mi: jsPsych.timelineVariable('mi')},
+        data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), hE: jsPsych.timelineVariable('hE'), hEM: jsPsych.timelineVariable('hEM')},
         on_finish: function(data) {
             data.round = round;
             scoreTracker = data.score;
-            console.log(data.score)
         },
     };
 
@@ -327,7 +326,7 @@ const exp = (function() {
         },
         randomize_question_order: false,
         scale_width: 600,
-        data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), sd: jsPsych.timelineVariable('sd'), mi: jsPsych.timelineVariable('mi')},
+        data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), hE: jsPsych.timelineVariable('hE'), hEM: jsPsych.timelineVariable('hEM')},
         on_finish: function(data) {
             data.round = round;
             saveSurveyData(data);
@@ -344,7 +343,7 @@ const exp = (function() {
             },
         ],
         scale_width: 500,
-        data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), sd: jsPsych.timelineVariable('sd'), mi: jsPsych.timelineVariable('mi')},
+        data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), hE: jsPsych.timelineVariable('hE'), hEM: jsPsych.timelineVariable('hEM')},
         on_finish: (data) => {
             data.round = round;
             saveSurveyData(data);
