@@ -299,42 +299,70 @@ const createSpinner = function(canvas, spinnerData, score, sectors, interactive)
   }
   
   //* Draw sectors and prizes texts to canvas */
-  const drawSector = (sectors, activeIdx = null, activePoints = null, showNumbers = true) => {
-    for (let i = 0; i < sectors.length; i++) {
-      const ang = arc * i;
-      ctx.save();
+const drawSector = (sectors, activeIdx = null, activePoints = null, showNumbers = true) => {
+  // ---- outline + padding config ----
+  const WHEEL_OUTLINE_WIDTH = 2;                     // outer ring thickness
+  const WEDGE_OUTLINE_WIDTH = 2;                     // divider lines between wedges
+  const WHEEL_OUTLINE_COLOR = "rgba(0,0,0,0.45)";    // outer ring color
+  const WEDGE_OUTLINE_COLOR = "rgba(0,0,0,0.45)";    // wedge divider color
+  const OUTER_PAD = Math.max(WHEEL_OUTLINE_WIDTH, WEDGE_OUTLINE_WIDTH) + 2; // px
+  const R = rad - OUTER_PAD;                         // effective radius we draw to
 
-      // paint wedge
-      ctx.beginPath();
-      const isActive = (i === activeIdx && activePoints != null);
-      ctx.fillStyle = isActive ? "green" : sectors[i].color;
-      ctx.moveTo(rad, rad);
-      ctx.arc(rad, rad, rad, ang, ang + arc);
-      ctx.lineTo(rad, rad);
-      ctx.fill();
+  // (Optional) clear canvas before redrawing the static wheel layer
+  // ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // text
-      if (isActive) {
-        // big +points on winning wedge
-        ctx.translate(rad, rad);
-        const rotation = (arc/2) * (1 + 2*i) + Math.PI/2;
-        ctx.rotate(rotation);
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.font = "bolder 80px sans-serif";
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = "black";
-        ctx.fillStyle = "#fff";
-        ctx.strokeText(`+${activePoints}`, 0, -rad * 0.66);
-        ctx.fillText(`+${activePoints}`,   0, -rad * 0.66);
-      } else if (showNumbers) {
-        // render the sector's numbers on the wedge
-        drawWedgeNumbers(sectors[i], i);
-      }
+  for (let i = 0; i < sectors.length; i++) {
+    const ang = arc * i;
+    const isActive = (i === activeIdx && activePoints != null);
 
-      ctx.restore();
+    ctx.save();
+
+    // ---- WEDGE FILL ----
+    ctx.beginPath();
+    ctx.moveTo(rad, rad);
+    ctx.arc(rad, rad, R, ang, ang + arc, false);
+    ctx.lineTo(rad, rad);
+    ctx.closePath();
+
+    ctx.fillStyle = isActive ? "green" : sectors[i].color;
+    ctx.fill();
+
+    // ---- WEDGE OUTLINE (divider lines + arc edge) ----
+    ctx.lineWidth = WEDGE_OUTLINE_WIDTH;
+    ctx.strokeStyle = WEDGE_OUTLINE_COLOR;
+    ctx.stroke();
+
+    // ---- TEXT ----
+    if (isActive) {
+      // winner: big +points
+      ctx.translate(rad, rad);
+      const rotation = (arc / 2) * (1 + 2 * i) + Math.PI / 2;
+      ctx.rotate(rotation);
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.font = "bolder 80px sans-serif";
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = "black";
+      ctx.fillStyle = "#fff";
+      ctx.strokeText(`+${activePoints}`, 0, -R * 0.66);
+      ctx.fillText(`+${activePoints}`,   0, -R * 0.66);
+    } else if (showNumbers) {
+      // non-winners: show their numbers on-wedge
+      drawWedgeNumbers(sectors[i], i, R);
     }
-  };
+
+    ctx.restore();
+  }
+
+  // ---- OUTER WHEEL RING ----
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(rad, rad, R, 0, 2 * Math.PI, false);
+  ctx.lineWidth = WHEEL_OUTLINE_WIDTH;
+  ctx.strokeStyle = WHEEL_OUTLINE_COLOR;
+  ctx.stroke();
+  ctx.restore();
+};
 
   drawSector(sectors, null, null);
   //renderLegend(sectors);

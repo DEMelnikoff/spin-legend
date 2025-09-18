@@ -52,17 +52,17 @@ const exp = (function() {
 
             `<div class='parent'>
                 <p>Each wheel is divided into four wedges, like this:</p>
-                <img src="./img/w2_6.png" style="width:50%; height:50%">
+                <img src="./img/wheel1.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
                 <p>The wedge the wheel lands on determines how many tokens you win for that spin.</p>
-                <img src="./img/w2_6.png" style="width:50%; height:50%">
+                <img src="./img/wheel1.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
                 <p>For example, if a wheel lands on this wedge...</p>
-                <img src="./img/w2.png" style="width:50%; height:50%">
+                <img src="./img/land2.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
@@ -72,7 +72,7 @@ const exp = (function() {
 
             `<div class='parent'>
                 <p>If a wheel lands on this wedge...</p>
-                <img src="./img/w6.png" style="width:50%; height:50%">
+                <img src="./img/land6.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
@@ -82,17 +82,17 @@ const exp = (function() {
 
             `<div class='parent'>
                 <p>Some wheels have wedges with multiple numbers, like this:</p>
-                <img src="./img/w1357.png" style="width:50%; height:50%">
+                <img src="./img/wheel2.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
                 <p>If a wheel lands on multiple numbers, one is randomly selected and added to your total.</p>
-                <img src="./img/w1357.png" style="width:50%; height:50%">
+                <img src="./img/wheel2.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
                 <p>For example, if a wheel lands on this wedge...</p>
-                <img src="./img/w3_5.png" style="width:50%; height:50%">
+                <img src="./img/land57.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
@@ -101,23 +101,23 @@ const exp = (function() {
             </div>`,
 
             `<div class='parent'>
-                <p>...or 3 tokens.</p>
-                <img src="./img/plus3.png" style="width:50%; height:50%">
+                <p>...or 7 tokens.</p>
+                <img src="./img/plus7.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
-                <p>If a wheel lands on this wedge, you'll have an equal chance of winning 1 or 7 tokens.</p>
-                <img src="./img/land17.png" style="width:50%; height:50%">
+                <p>If a wheel lands on this wedge, you'll have an equal chance of winning 1 or 3 tokens.</p>
+                <img src="./img/land13.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
-                <p>If a wheel lands on this wedge, you'll have an equal chance of winning 2 or 6 tokens.</p>
-                <img src="./img/land26.png" style="width:50%; height:50%">
+                <p>For this wheel, every wedge gives an equal chance of 2 or 6 tokens.</p>
+                <img src="./img/wheel3.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
-                <p>If a wheel lands on this wedge, you'll have an equal chance of winning 1, 3, 5, or 7 tokens.</p>
-                <img src="./img/land1357.png" style="width:50%; height:50%">
+                <p>For this wheel, every wedge gives an equal chance of 1, 3, 5, or 7 tokens.</p>
+                <img src="./img/wheel4.png" style="width:50%; height:50%">
             </div>`,
         ],
 
@@ -289,7 +289,7 @@ const exp = (function() {
         {sectors: [ wedges.w1_7, wedges.w3_5, wedges.w1_7, wedges.w3_5 ],                 wheel_id: 6, ev: 4, sd: 2, mi: 1, hE: 2, hEM: 1},
     ];
 
-    const WHEEL_COLORS = ["#BDBDBD", "#737373", "#BDBDBD", "#737373"];
+    const WHEEL_COLORS = ["#BDBDBD", "#BDBDBD", "#BDBDBD", "#BDBDBD"];
 
     let scoreTracker = 0; // track current score
 
